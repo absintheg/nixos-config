@@ -44,14 +44,19 @@
   fileSystems."/mnt/e" = {
     device = "/dev/disk/by-uuid/3DB917C83DB74456";
     fsType = "ntfs3";
+    options = [
+      "uid=4325"
+    ];
   };
 
   fileSystems."/mnt/d" = {
     device = "/dev/disk/by-uuid/080ADB920ADB7AE0";
     fsType = "ntfs3";
+    options = [
+      "uid=4325"
+    ];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
-
