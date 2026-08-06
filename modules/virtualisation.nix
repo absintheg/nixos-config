@@ -9,8 +9,9 @@
 
   programs.virt-manager.enable = true;
 
-  environment.systemPackages = [
-    pkgs.qemu_kvm
-    pkgs.qemu-utils
+  environment.systemPackages = with pkgs; [
+    qemu_kvm
+    qemu-utils
+	pciutils
   ];
 }
