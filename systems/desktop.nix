@@ -9,5 +9,6 @@
     ../modules/games.nix
     ../modules/kde.nix
     ../modules/physical.nix
+    ../modules/virtualisation.nix
   ];
 }
