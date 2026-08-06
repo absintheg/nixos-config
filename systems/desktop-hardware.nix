@@ -24,6 +24,8 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "split_lock_detect=off"
+	"intel_iommu=on"
+	"iommu=pt"
   ];
 
   fileSystems."/" = {
