@@ -11,7 +11,6 @@
     ghostty
     alacritty
 
-    obs-studio
     qbittorrent
     keepassxc
     gparted

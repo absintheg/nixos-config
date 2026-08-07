@@ -10,5 +10,6 @@
     ../modules/kde.nix
     ../modules/physical.nix
     ../modules/virtualisation.nix
+    ../modules/obs.nix
   ];
 }
