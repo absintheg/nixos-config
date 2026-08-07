@@ -22,16 +22,16 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
     "kvm-intel"
-    "vfio"
-    "vfio_iommu_type1"
-    "vfio_pci"
-    "vfio_pci_vfio_virqfd"
+    # "vfio"
+    # "vfio_iommu_type1"
+    # "vfio_pci"
+    # "vfio_pci_vfio_virqfd"
   ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "split_lock_detect=off"
-    "intel_iommu=on"
-    "iommu=pt"
+    # "intel_iommu=on"
+    # "iommu=pt"
   ];
 
   fileSystems."/" = {
