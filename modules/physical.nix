@@ -19,6 +19,8 @@
     emacs
     obsidian
     piper
+
+	pavucontrol
   ];
 
   swapDevices = [
