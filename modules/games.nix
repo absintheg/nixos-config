@@ -3,6 +3,9 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
 
+	bottles
+	lutris
+
     (heroic.override {
       extraPkgs =
         pkgs': with pkgs'; [
