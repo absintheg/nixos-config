@@ -11,5 +11,6 @@
     ../modules/physical.nix
     ../modules/virtualisation.nix
     ../modules/obs.nix
+	../modules/bluetooth.nix
   ];
 }
