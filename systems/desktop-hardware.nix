@@ -54,18 +54,18 @@
   };
 
   fileSystems."/mnt/e" = {
-    device = "/dev/disk/by-uuid/3DB917C83DB74456";
-    fsType = "ntfs3";
+    device = "/dev/disk/by-uuid/feefd0cc-ea7d-44d1-9cb2-25573800b733";
+    fsType = "btrfs";
     options = [
-      "uid=4325"
+      "nofail"
     ];
   };
 
   fileSystems."/mnt/d" = {
-    device = "/dev/disk/by-uuid/080ADB920ADB7AE0";
-    fsType = "ntfs3";
+    device = "/dev/disk/by-uuid/9549f8f7-a18b-41c6-8aab-791c471157b4";
+    fsType = "btrfs";
     options = [
-      "uid=4325"
+      "nofail"
     ];
   };
 
