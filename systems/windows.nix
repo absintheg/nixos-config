@@ -9,7 +9,7 @@
   wsl = {
     enable = true;
     defaultUser = "me";
-	generateResolvConf = false;
+	wslConf.network.generateResolvConf = false;
   };
 
   environment.systemPackages = [
