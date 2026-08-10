@@ -1,5 +1,8 @@
 { pkgs, unstable, ... }:
 {
+  imports = [
+    ./dns.nix
+  ];
   boot.supportedFilesystems = [ "ntfs" ];
 
   environment.systemPackages = with pkgs; [
@@ -20,7 +23,7 @@
     obsidian
     piper
 
-	pavucontrol
+    pavucontrol
   ];
 
   swapDevices = [
@@ -28,12 +31,6 @@
       device = "/var/lib/swapfile";
       size = 12 * 1024;
     }
-  ];
-
-  # Quad9 DNS
-  networking.nameservers = [
-    "9.9.9.9"
-    "149.112.112.112"
   ];
 
   fonts = {
