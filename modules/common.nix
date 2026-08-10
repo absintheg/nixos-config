@@ -109,6 +109,7 @@ in
       "networkmanager"
       "wheel"
     ];
+	uid = 4325;
     shell = pkgs.zsh;
     home = "/home/me";
   };
