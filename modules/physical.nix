@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./dns.nix
@@ -62,7 +62,6 @@
 
   # VPNs
   services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
   services.tailscale.enable = true;
 
   services.openssh = {
