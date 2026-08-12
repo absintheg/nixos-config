@@ -1,30 +1,39 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 {
   imports = [
     ./dns.nix
   ];
   boot.supportedFilesystems = [ "ntfs" ];
 
-  environment.systemPackages = with pkgs; [
-    chromium
-    librewolf
-    firefox
+  environment.systemPackages =
+    with pkgs;
+    [
+      chromium
+      librewolf
+      firefox
 
-    wezterm
-    ghostty
-    alacritty
+      wezterm
+      ghostty
+      alacritty
 
-    qbittorrent
-    keepassxc
-    gparted
-    gimp
-    vlc
-    emacs
-    obsidian
-    piper
+      qbittorrent
+      keepassxc
+      gparted
+      gimp
+      vlc
+      emacs
+      obsidian
+      piper
 
-    pavucontrol
-  ];
+      pavucontrol
+    ]
+    ++ [
+      pkgs-unstable.mullvad-vpn
+    ];
 
   swapDevices = [
     {
@@ -61,8 +70,9 @@
   networking.networkmanager.enable = true;
 
   # VPNs
-  services.mullvad-vpn.enable = true;
   services.tailscale.enable = true;
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs-unstable.mullvad;
 
   services.openssh = {
     enable = true;
