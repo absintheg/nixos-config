@@ -38,8 +38,8 @@
     packages = with pkgs; [
       jetbrains-mono
       nerd-fonts.jetbrains-mono
-	  nerd-fonts.iosevka
-	  nerd-fonts.hack
+      nerd-fonts.iosevka
+      nerd-fonts.hack
     ];
   };
 
