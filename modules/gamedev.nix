@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   environment.systemPackages =
     with pkgs;
@@ -10,6 +10,6 @@
       blender
     ]
     ++ [
-      unstable.godot
+      pkgs-unstable.godot
     ];
 }

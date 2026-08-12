@@ -19,7 +19,7 @@
           inherit system;
           specialArgs = {
             inherit inputs;
-            inherit unstable;
+            pkgs-unstable = unstable;
           };
           modules = [
             ({ ... }: {

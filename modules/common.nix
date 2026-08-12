@@ -1,6 +1,6 @@
 {
   pkgs,
-  unstable,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -74,9 +74,9 @@ in
       ffmpeg_8
     ]
     ++ [
-      unstable.neovim
-      unstable.cargo
-      unstable.claude-code
+      pkgs-unstable.neovim
+      pkgs-unstable.cargo
+      pkgs-unstable.claude-code
     ];
 
   nix.gc = {
