@@ -1,19 +1,22 @@
 { pkgs, pkgs-unstable, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    prismlauncher
+  environment.systemPackages =
+    with pkgs;
+    [
+      prismlauncher
 
-	bottles
-	lutris
-  ] ++ [
-    (pkgs-unstable.heroic.override {
-      extraPkgs =
-        pkgs': with pkgs'; [
-          gamescope
-          gamemode
-        ];
-    })
-  ];
+      bottles
+      lutris
+    ]
+    ++ [
+      (pkgs-unstable.heroic.override {
+        extraPkgs =
+          pkgs': with pkgs'; [
+            gamescope
+            gamemode
+          ];
+      })
+    ];
 
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
