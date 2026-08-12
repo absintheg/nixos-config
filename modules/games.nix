@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   environment.systemPackages = with pkgs; [
     prismlauncher
 
 	bottles
 	lutris
-
-    (heroic.override {
+  ] ++ [
+    (pkgs-unstable.heroic.override {
       extraPkgs =
         pkgs': with pkgs'; [
           gamescope
