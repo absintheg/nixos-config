@@ -35,13 +35,6 @@
       pkgs-unstable.mullvad-vpn
     ];
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 12 * 1024;
-    }
-  ];
-
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [

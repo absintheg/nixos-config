@@ -11,6 +11,13 @@
     ../modules/physical.nix
     ../modules/virtualisation.nix
     ../modules/obs.nix
-	../modules/bluetooth.nix
+    ../modules/bluetooth.nix
+  ];
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 12 * 1024;
+    }
   ];
 }
