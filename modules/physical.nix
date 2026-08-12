@@ -28,7 +28,7 @@
       emacs
       obsidian
       piper
-
+	  baobab
       pavucontrol
     ]
     ++ [
