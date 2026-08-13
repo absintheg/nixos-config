@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # Quad9 DNS
   networking.nameservers = [

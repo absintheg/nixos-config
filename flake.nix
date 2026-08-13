@@ -1,7 +1,6 @@
 {
   outputs =
     {
-      self,
       nixpkgs,
       nixpkgs-unstable,
       ...
