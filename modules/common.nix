@@ -30,7 +30,7 @@ in
 
     ohMyZsh = {
       enable = true;
-	  theme = "essembeh";
+      theme = "essembeh";
       plugins = [
         "git"
         "sudo"
@@ -60,7 +60,7 @@ in
       stow
       fastfetch
       tree-sitter
-	  zed-editor
+      zed-editor
       nixfmt
       nixd
       tmux
@@ -88,7 +88,7 @@ in
   programs.direnv = {
     enable = true;
     package = pkgs.direnv;
-	silent = true;
+    silent = true;
     nix-direnv = {
       enable = true;
       package = pkgs.nix-direnv;
@@ -109,7 +109,7 @@ in
       "networkmanager"
       "wheel"
     ];
-	uid = 4325;
+    uid = 4325;
     shell = pkgs.zsh;
     home = "/home/me";
   };
