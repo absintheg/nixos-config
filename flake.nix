@@ -41,5 +41,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+	prism-launcher.url = "github:absintheg/PrismLauncher/develop";
   };
 }

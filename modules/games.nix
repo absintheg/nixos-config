@@ -1,9 +1,19 @@
-{ pkgs, pkgs-unstable, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  inputs,
+  ...
+}:
 {
   environment.systemPackages =
     with pkgs;
     [
-      prismlauncher
+      (pkgs.prismlauncher.override {
+        prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
+          version = "custom";
+          src = inputs.prism-launcher;
+        });
+      })
 
       bottles
       lutris
