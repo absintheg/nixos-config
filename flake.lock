@@ -107,14 +107,14 @@
         "lastModified": 1786702477,
         "narHash": "sha256-nWez3kB31awsnvHEAWCUVCCdEenrJkpZFlonv72m0Zo=",
         "owner": "absintheg",
-        "repo": "PrismLauncher",
+        "repo": "prism-launcher",
         "rev": "4b7418f2f0a9f222a4d525650395ff93232c823b",
         "type": "github"
       },
       "original": {
         "owner": "absintheg",
         "ref": "develop",
-        "repo": "PrismLauncher",
+        "repo": "prism-launcher",
         "type": "github"
       }
     },
