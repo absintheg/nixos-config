@@ -60,6 +60,7 @@ in
       stow
       fastfetch
       tree-sitter
+	  zed-editor
       nixfmt
       nixd
       tmux
