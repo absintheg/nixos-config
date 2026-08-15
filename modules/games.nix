@@ -15,8 +15,8 @@
         });
       })
 
-      bottles
-      lutris
+      # bottles
+      # lutris
     ]
     ++ [
       (pkgs-unstable.heroic.override {
