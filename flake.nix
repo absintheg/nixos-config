@@ -42,9 +42,9 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-	# Personal prism launcher fork
-	# with few modifications
-	prism-launcher.url = "github:absintheg/prism-launcher/develop";
-	prism-launcher.flake = false;
+    # Personal prism launcher fork
+    # with few modifications
+    prism-launcher.url = "github:absintheg/prism-launcher/develop";
+    prism-launcher.flake = false;
   };
 }
