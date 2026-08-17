@@ -8,11 +8,6 @@
           "bluez5.enable-msbc" = true;
         };
       };
-      "11-bluetooth-policy" = {
-        "wireplumber.settings" = {
-          "bluetooth.autoswitch-to-headset-profile" = false;
-        };
-      };
     };
   };
 
