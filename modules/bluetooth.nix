@@ -21,15 +21,4 @@
       };
     };
   };
-
-  services.pipewire.wireplumber = {
-    enable = true;
-    extraConfig = {
-      "10-bluetooth-msbc" = {
-        "monitor.bluez.properties" = {
-          "bluez5.enable-msbc" = true;
-        };
-      };
-    };
-  };
 }

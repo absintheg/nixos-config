@@ -12,6 +12,8 @@
     ../modules/virtualisation.nix
     ../modules/obs.nix
     ../modules/bluetooth.nix
+    ../modules/audio.nix
+    ../modules/ssh.nix
   ];
 
   swapDevices = [
