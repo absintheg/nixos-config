@@ -76,7 +76,6 @@ in
     ++ [
       pkgs-unstable.neovim
       pkgs-unstable.cargo
-      pkgs-unstable.claude-code
     ];
 
   nix.gc = {
