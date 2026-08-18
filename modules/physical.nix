@@ -15,7 +15,7 @@
     (import inputs.nixpkgs-kernel {
       system = pkgs.stdenv.hostPlatform.system;
       config.allowUnfree = true;
-    }).linuxPackages;
+    }).linuxPackages_latest;
 
   environment.systemPackages =
     with pkgs;
