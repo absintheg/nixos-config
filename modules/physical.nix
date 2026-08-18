@@ -13,7 +13,8 @@
 
   boot.kernelPackages =
     (import inputs.nixpkgs-kernel {
-      system = pkgs.system;
+      system = pkgs.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
     }).linuxPackages;
 
   environment.systemPackages =
