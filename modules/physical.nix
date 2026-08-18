@@ -1,13 +1,20 @@
 {
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 {
   imports = [
     ./dns.nix
   ];
+
   boot.supportedFilesystems = [ "ntfs" ];
+
+  boot.kernelPackages =
+    (import inputs.nixpkgs-kernel {
+      system = pkgs.system;
+    }).linuxPackages;
 
   environment.systemPackages =
     with pkgs;
