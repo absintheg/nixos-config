@@ -22,6 +22,7 @@
     vlc
     emacs
     obsidian
+	vscodium
     piper
     baobab
     mullvad-vpn
