@@ -37,10 +37,8 @@
       obsidian
       piper
       baobab
+      mullvad-vpn
       pavucontrol
-    ]
-    ++ [
-      pkgs-unstable.mullvad-vpn
     ];
 
   fonts = {
@@ -73,7 +71,6 @@
   # VPNs
   services.tailscale.enable = true;
   services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs-unstable.mullvad;
 
   # For dual booting
   time.hardwareClockInLocalTime = true;
