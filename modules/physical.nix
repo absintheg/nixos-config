@@ -1,9 +1,4 @@
-{
-  pkgs,
-  pkgs-unstable,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./dns.nix
@@ -11,35 +6,27 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  boot.kernelPackages =
-    (import inputs.nixpkgs-kernel {
-      system = pkgs.stdenv.hostPlatform.system;
-      config.allowUnfree = true;
-    }).linuxPackages_latest;
+  environment.systemPackages = with pkgs; [
+    chromium
+    librewolf
+    firefox
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      chromium
-      librewolf
-      firefox
+    wezterm
+    ghostty
+    alacritty
 
-      wezterm
-      ghostty
-      alacritty
-
-      qbittorrent
-      keepassxc
-      gparted
-      gimp
-      vlc
-      emacs
-      obsidian
-      piper
-      baobab
-      mullvad-vpn
-      pavucontrol
-    ];
+    qbittorrent
+    keepassxc
+    gparted
+    gimp
+    vlc
+    emacs
+    obsidian
+    piper
+    baobab
+    mullvad-vpn
+    pavucontrol
+  ];
 
   fonts = {
     enableDefaultPackages = true;

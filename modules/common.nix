@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 let
@@ -15,6 +16,12 @@ in
     "nix-command"
     "flakes"
   ];
+
+  boot.kernelPackages =
+    (import inputs.nixpkgs-kernel {
+      system = pkgs.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    }).linuxPackages_latest;
 
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
