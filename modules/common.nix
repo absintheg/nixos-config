@@ -72,6 +72,7 @@ in
       nixd
       tmux
       unzip
+      unar
       wget
       pv
       gcc
