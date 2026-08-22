@@ -76,6 +76,7 @@ in
       wget
       pv
       gcc
+      gnumake
       gnupg
       vim
       python3
