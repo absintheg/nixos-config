@@ -78,6 +78,7 @@ in
       gcc
       gnupg
       vim
+      python3
       killall
       ffmpeg_8
     ]
