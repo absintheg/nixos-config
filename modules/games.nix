@@ -14,9 +14,7 @@
           src = inputs.prism-launcher;
         });
       })
-
-      # bottles
-      # lutris
+      lutris
     ]
     ++ [
       (pkgs-unstable.heroic.override {
