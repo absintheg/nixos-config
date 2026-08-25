@@ -25,7 +25,6 @@
 	vscodium
     piper
     baobab
-    mullvad-vpn
     pavucontrol
   ];
 
