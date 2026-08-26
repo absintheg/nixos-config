@@ -83,10 +83,11 @@ in
       killall
       ffmpeg_8
     ]
-    ++ [
-      pkgs-unstable.neovim
-      pkgs-unstable.cargo
-    ];
+    ++ (with pkgs-unstable; [
+      devenv
+      neovim
+      cargo
+    ]);
 
   nix.gc = {
     automatic = true;
