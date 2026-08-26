@@ -26,6 +26,7 @@
     piper
     baobab
     pavucontrol
+	mullvad-vpn
   ];
 
   fonts = {
