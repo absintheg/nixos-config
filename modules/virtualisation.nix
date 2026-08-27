@@ -12,6 +12,6 @@
   environment.systemPackages = with pkgs; [
     qemu_kvm
     qemu-utils
-	pciutils
+    pciutils
   ];
 }

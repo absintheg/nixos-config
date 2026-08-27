@@ -22,11 +22,11 @@
     vlc
     emacs
     obsidian
-	vscodium
+    vscodium
     piper
     baobab
     pavucontrol
-	mullvad-vpn
+    mullvad-vpn
   ];
 
   fonts = {
