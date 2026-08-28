@@ -44,8 +44,8 @@
   boot.loader.grub = {
     enable = true;
     device = "nodev";
+    theme = "${pkgs.kdePackages.breeze-grub}/grub/themes/breeze";
     efiSupport = true;
-    useOSProber = true;
   };
   # boot.loader.systemd-boot.enable = true;
 
