@@ -13,6 +13,7 @@
     ../modules/bluetooth.nix
     ../modules/audio.nix
     ../modules/ssh.nix
+	../modules/pasteblock.nix
 
     ../modules/kde.nix
     # ../modules/hyprland.nix
