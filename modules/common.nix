@@ -6,9 +6,9 @@
 }:
 let
   shellAliases = {
-    rebuild-switch = "sudo nixos-rebuild switch --flake";
-    rebuild-boot = "sudo nixos-rebuild boot --flake";
-    rebuild-test = "sudo nixos-rebuild test --flake";
+    rs = "sudo nixos-rebuild switch --flake";
+    rb = "sudo nixos-rebuild boot --flake";
+    rt = "sudo nixos-rebuild test --flake";
   };
 in
 {
