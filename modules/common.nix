@@ -80,12 +80,12 @@ in
       gnumake
       gnupg
       vim
+      devenv
       python3
       killall
       ffmpeg_8
     ]
     ++ (with pkgs-unstable; [
-      devenv
       neovim
       cargo
     ]);
