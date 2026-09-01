@@ -79,7 +79,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,ara,ru,de";
+    layout = "us,ara";
     variant = "";
     options = "grp:win_space_toggle";
   };
