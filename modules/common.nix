@@ -9,6 +9,9 @@ let
     rs = "sudo nixos-rebuild switch --flake /etc/nixos";
     rb = "sudo nixos-rebuild boot --flake /etc/nixos";
     rt = "sudo nixos-rebuild test --flake /etc/nixos";
+
+	fwo = "sudo nixos-firewall-tool open";
+	fwr = "sudo nixos-firewall-tool reset";
   };
 in
 {
