@@ -10,8 +10,8 @@ let
     rb = "sudo nixos-rebuild boot --flake /etc/nixos";
     rt = "sudo nixos-rebuild test --flake /etc/nixos";
 
-	fwo = "sudo nixos-firewall-tool open";
-	fwr = "sudo nixos-firewall-tool reset";
+    fwo = "sudo nixos-firewall-tool open";
+    fwr = "sudo nixos-firewall-tool reset";
   };
 in
 {
@@ -91,6 +91,7 @@ in
     ++ (with pkgs-unstable; [
       neovim
       cargo
+      yazi
     ]);
 
   nix.gc = {
