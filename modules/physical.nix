@@ -27,6 +27,7 @@
     baobab
     pavucontrol
     mullvad-vpn
+    easyeffects
   ];
 
   fonts = {
