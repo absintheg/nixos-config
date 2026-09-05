@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 {
@@ -11,9 +12,24 @@
     xwayland.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    hyprpaper
-  ];
+  environment.systemPackages = [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ]
+  ++ (with pkgs.kdePackages; [
+    dolphin
+    ark
+    kate
+    okular
+    kolourpaint
+    kcalc
+    kclock
+    kcharselect
+    discover
+  ])
+  ++ (with pkgs; [
+    wl-clipboard
+	plasma-systemmonitor
+  ]);
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
