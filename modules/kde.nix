@@ -7,18 +7,19 @@
     xserver.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    # KDE Utilities
-    kdePackages.discover # Optional: Software center for Flatpaks/firmware updates
-    kdePackages.kcalc # Calculator
-    kdePackages.kcharselect # Character map
-    kdePackages.kclock # Clock app
-    kdePackages.kcolorchooser # Color picker
-    kdePackages.kolourpaint # Simple paint program
-    kdePackages.ksystemlog # System log viewer
-    kdePackages.sddm-kcm # SDDM configuration module
-    kdiff3 # File/directory comparison tool
-
-    wl-clipboard
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      wl-clipboard
+    ]
+    ++ (with pkgs.kdePackages; [
+      discover # Optional: Software center for Flatpaks/firmware updates
+      kcalc # Calculator
+      kcharselect # Character map
+      kclock # Clock app
+      kcolorchooser # Color picker
+      kolourpaint # Simple paint program
+      ksystemlog # System log viewer
+      sddm-kcm # SDDM configuration module
+    ]);
 }
