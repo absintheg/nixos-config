@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   imports = [
     ./desktop-hardware.nix
@@ -19,8 +19,10 @@
     ../modules/hyprland.nix
   ];
 
-  # Enable KDE plasma as default
-  my.plasma.enable = config.specialisation != { };
+  # Enable hyprland as default
+  my.hyprland = lib.mkIf (config.specialisation != { }) {
+    enable = true;
+  };
 
   specialisation = {
     plasma.configuration = {
