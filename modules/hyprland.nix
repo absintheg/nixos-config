@@ -19,7 +19,10 @@ in
       xwayland.enable = true;
     };
 
-    services.displayManager.gdm.enable = true;
+    services = {
+      displayManager.sddm.enable = true;
+      displayManager.sddm.wayland.enable = true;
+    };
 
     environment.systemPackages =
       with pkgs;
