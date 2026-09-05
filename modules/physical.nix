@@ -58,7 +58,7 @@
   networking.networkmanager.enable = true;
 
   # VPNs
-  services.tailscale.enable = true;
+  # services.tailscale.enable = true;
   services.mullvad-vpn.enable = true;
 
   # For dual booting
