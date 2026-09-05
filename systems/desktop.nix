@@ -16,23 +16,29 @@
     ../modules/pasteblock.nix
 
     ../modules/kde.nix
-    ../modules/hyprland.nix
+    # ../modules/hyprland.nix
   ];
 
+  # Specialisations for having multiple boot options
+  #
   # Enable hyprland as default
-  my.hyprland = lib.mkIf (config.specialisation != { }) {
-    enable = true;
-  };
+  # my.hyprland = lib.mkIf (config.specialisation != { }) {
+  #   enable = true;
+  # };
+  #
+  # specialisation = {
+  #   plasma.configuration = {
+  #     my.plasma.enable = true;
+  #   };
+  #
+  #   hyprland.configuration = {
+  #     my.hyprland.enable = true;
+  #   };
+  # };
 
-  specialisation = {
-    plasma.configuration = {
-      my.plasma.enable = true;
-    };
 
-    hyprland.configuration = {
-      my.hyprland.enable = true;
-    };
-  };
+  # Hyprland is larp
+  my.plasma.enable = true;
 
   swapDevices = [
     {
