@@ -20,6 +20,7 @@
       (pkgs-unstable.heroic.override {
         extraPkgs =
           pkgs': with pkgs'; [
+            mangohud
             gamescope
             gamemode
           ];
