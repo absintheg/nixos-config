@@ -16,7 +16,6 @@
     [
       noctalia-shell
       wl-clipboard
-      plasma-systemmonitor
     ]
     ++ (with pkgs.kdePackages; [
       dolphin
@@ -28,6 +27,7 @@
       kclock
       kcharselect
       discover
+      plasma-systemmonitor
     ]);
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
