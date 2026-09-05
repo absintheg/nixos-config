@@ -27,6 +27,7 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        kitty
         noctalia-shell
         wl-clipboard
       ]
