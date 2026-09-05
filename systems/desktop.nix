@@ -15,8 +15,8 @@
     ../modules/ssh.nix
 	../modules/pasteblock.nix
 
-    ../modules/kde.nix
-    # ../modules/hyprland.nix
+    # ../modules/kde.nix
+    ../modules/hyprland.nix
   ];
 
   swapDevices = [
