@@ -7,9 +7,9 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   environment.systemPackages = with pkgs; [
-    chromium
     librewolf
     firefox
+	brave
 
     wezterm
     ghostty
