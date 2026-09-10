@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     librewolf
     firefox
-	brave
+    brave
 
     wezterm
     ghostty
