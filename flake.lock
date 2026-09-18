@@ -88,11 +88,11 @@
     "prism-launcher": {
       "flake": false,
       "locked": {
-        "lastModified": 1786702477,
-        "narHash": "sha256-nWez3kB31awsnvHEAWCUVCCdEenrJkpZFlonv72m0Zo=",
+        "lastModified": 1789735132,
+        "narHash": "sha256-PqOsduVvHzp69/fI0auDTnOO37N/elghrj+eaWuRUpI=",
         "owner": "absintheg",
         "repo": "prism-launcher",
-        "rev": "4b7418f2f0a9f222a4d525650395ff93232c823b",
+        "rev": "45c996c809cf9f027869b9fd74be44c9e08b14f1",
         "type": "github"
       },
       "original": {
