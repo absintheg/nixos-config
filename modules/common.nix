@@ -135,6 +135,10 @@ in
     wheelNeedsPassword = false;
   };
 
+  virtualisation.docker = {
+	  enable = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "26.05";
