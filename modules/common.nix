@@ -95,7 +95,7 @@ in
       perf
     ]);
 
-  programs.users.users.me = {
+  users.users.me = {
     isNormalUser = true;
     description = "Myself";
     extraGroups = [
