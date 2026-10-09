@@ -27,6 +27,7 @@
   networking.firewall.allowedUDPPorts = [ 25565 ];
 
   services.ratbagd.enable = true;
+  services.cloudflare-warp.enable = true;
 
   my.plasma.enable = true;
 
