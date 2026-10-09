@@ -46,7 +46,7 @@
 
     # Personal prism launcher fork
     # with few modifications
-    prism-launcher.url = "github:absintheg/prism-launcher/develop";
-    prism-launcher.flake = false;
+    # prism-launcher.url = "github:absintheg/prism-launcher/develop";
+    # prism-launcher.flake = false;
   };
 }
