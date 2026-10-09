@@ -85,30 +85,12 @@
         "type": "github"
       }
     },
-    "prism-launcher": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1789735132,
-        "narHash": "sha256-PqOsduVvHzp69/fI0auDTnOO37N/elghrj+eaWuRUpI=",
-        "owner": "absintheg",
-        "repo": "prism-launcher",
-        "rev": "45c996c809cf9f027869b9fd74be44c9e08b14f1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "absintheg",
-        "ref": "develop",
-        "repo": "prism-launcher",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-kernel": "nixpkgs-kernel",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "prism-launcher": "prism-launcher"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     }
   },
