@@ -87,6 +87,10 @@ in
       gh
       git
       pv
+
+      node
+      typescript
+      typescript-language-server
     ]
     ++ (with pkgs-unstable; [
       neovim
