@@ -12,7 +12,6 @@
     qbittorrent
     keepassxc
     gparted
-    gimp
     vlc
     obsidian
     vscode
