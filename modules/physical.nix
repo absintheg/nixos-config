@@ -15,7 +15,7 @@
     gimp
     vlc
     obsidian
-    vscodium
+    vscode
     zed-editor
     baobab
     pavucontrol
