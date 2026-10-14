@@ -88,7 +88,7 @@ in
       git
       pv
 
-      node
+      nodejs
       typescript
       typescript-language-server
     ]
