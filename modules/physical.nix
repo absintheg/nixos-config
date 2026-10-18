@@ -25,9 +25,10 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      jetbrains-mono
+      nerd-fonts.lilex
+      nerd-fonts.jetbrains-mono
+      # jetbrains-mono
       # nerd-fonts.terminess-ttf
-      # nerd-fonts.jetbrains-mono
       # nerd-fonts.iosevka
       # nerd-fonts.hack
       # nerd-fonts.profont
