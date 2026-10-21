@@ -91,6 +91,9 @@ in
       nodejs
       typescript
       typescript-language-server
+
+      man-pages
+      man-pages-posix
     ]
     ++ (with pkgs-unstable; [
       neovim
@@ -98,6 +101,8 @@ in
       opencode
       perf
     ]);
+
+  documentation.dev.enable = true;
 
   users.users.me = {
     isNormalUser = true;
