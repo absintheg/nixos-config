@@ -78,6 +78,7 @@ in
       wget
       gcc
       gnumake
+      cmake
       gnupg
       tmux
       vim
