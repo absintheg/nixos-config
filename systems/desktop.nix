@@ -20,6 +20,7 @@
     blender
     piper
     krita
+    wineWow64Packages.stable
   ];
 
   # Port for hosting minecraft server
