@@ -29,6 +29,7 @@
 
   services.ratbagd.enable = true;
   services.cloudflare-warp.enable = true;
+  services.tailscale.enable = true;
 
   my.plasma.enable = true;
 
