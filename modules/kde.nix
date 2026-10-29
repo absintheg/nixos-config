@@ -18,6 +18,8 @@ in
       xserver.enable = true;
     };
 
+    programs.kde-pim.enable = false;
+
     environment.systemPackages =
       with pkgs;
       [
