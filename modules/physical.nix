@@ -20,6 +20,7 @@
     pavucontrol
     easyeffects
     gimp
+    brightnessctl
   ];
 
   fonts = {
