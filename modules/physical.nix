@@ -1,27 +1,38 @@
 { pkgs, ... }:
+let
+  firewallToolSrc = ../packages/nixos-firewall-tool;
+  firewallTool = pkgs.nixos-firewall-tool.overrideAttrs {
+    src = firewallToolSrc;
+  };
+in
 {
   boot.supportedFilesystems = [ "ntfs" ];
 
-  environment.systemPackages = with pkgs; [
-    librewolf
-    firefox
-    wezterm
-    ghostty
-    alacritty
-    neovide
-    qbittorrent
-    keepassxc
-    gparted
-    vlc
-    obsidian
-    vscode
-    zed-editor
-    baobab
-    pavucontrol
-    easyeffects
-    gimp
-    brightnessctl
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      librewolf
+      firefox
+      wezterm
+      ghostty
+      alacritty
+      neovide
+      qbittorrent
+      keepassxc
+      gparted
+      vlc
+      obsidian
+      vscode
+      zed-editor
+      baobab
+      pavucontrol
+      easyeffects
+      gimp
+      brightnessctl
+    ]
+    ++ [
+      firewallTool
+    ];
 
   fonts = {
     enableDefaultPackages = true;
