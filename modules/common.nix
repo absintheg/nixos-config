@@ -137,6 +137,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  nix.optimise.automatic = true;
   nix.gc = {
     automatic = true;
     dates = "daily";
