@@ -32,11 +32,14 @@ Open UDP port:
 Show all firewall rules:
   nixos-firewall-tool show
 
-Reset firewall configuration to system settings:
-  nixos-firewall-tool reset
+Close TCP port:
+  nixos-firewall-tool close tcp 8888
 
-Reset only a single port:
-  nixos-firewall-tool reset tcp 8888"
+Close UDP port:
+  nixos-firewall-tool close udp 51820
+
+Reset firewall configuration to system settings:
+  nixos-firewall-tool reset"
 }
 
 if [[ -z ${1+x} ]]; then
@@ -73,39 +76,33 @@ case $1 in
         ;;
     esac
   ;;
-  "reset")
-    if [[ -z ${2+x} ]] && [[ -z ${3+x} ]]; then
-      case $BACKEND in
-        iptables)
-          systemctl restart firewall.service
-          ;;
-        nftables)
-          nft flush set inet nixos-fw "temp-ports"
-          ;;
-      esac
-    elif [[ -z ${2+x} ]] || [[ -z ${3+x} ]]; then
+  "close")
+    if [[ -z ${2+x} ]] || [[ -z ${3+x} ]]; then
       show_help
       exit 1
-    else
-      protocol="$2"
-      port="$3"
-
-      case $BACKEND in
-        iptables)
-          # Remove every matching rule, in case the port was opened more than once.
-          for cmd in iptables ip6tables; do
-            while "$cmd" -w -C nixos-fw -p "$protocol" --dport "$port" -j nixos-fw-accept 2>/dev/null; do
-              "$cmd" -w -D nixos-fw -p "$protocol" --dport "$port" -j nixos-fw-accept
-            done
-          done
-          ;;
-        nftables)
-          if nft get element inet nixos-fw "temp-ports" "{ $protocol . $port }" &>/dev/null; then
-            nft delete element inet nixos-fw "temp-ports" "{ $protocol . $port }"
-          fi
-          ;;
-      esac
     fi
+
+    protocol="$2"
+    port="$3"
+
+    case $BACKEND in
+      iptables)
+        ip46tables -D nixos-fw -p "$protocol" --dport "$port" -j nixos-fw-accept
+        ;;
+      nftables)
+        nft delete element inet nixos-fw "temp-ports" "{ $protocol . $port }"
+        ;;
+    esac
+  ;;
+  "reset")
+    case $BACKEND in
+      iptables)
+        systemctl restart firewall.service
+        ;;
+      nftables)
+        nft flush set inet nixos-fw "temp-ports"
+        ;;
+    esac
   ;;
   -h|--help|help)
     show_help
@@ -116,3 +113,4 @@ case $1 in
     exit 1
   ;;
 esac
+
