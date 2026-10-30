@@ -81,4 +81,8 @@
   };
 
   services.flatpak.enable = true;
+
+  zramSwap.enable = true;
+
+  hardware.i2c.enable = true;
 }

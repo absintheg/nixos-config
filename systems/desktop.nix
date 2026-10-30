@@ -37,11 +37,4 @@
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 12 * 1024;
-    }
-  ];
 }
