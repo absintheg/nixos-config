@@ -10,7 +10,9 @@ let
     rb = "sudo nixos-rebuild boot --flake /etc/nixos";
     rt = "sudo nixos-rebuild test --flake /etc/nixos";
 
+    fws = "sudo nixos-firewall-tool show";
     fwo = "sudo nixos-firewall-tool open";
+    fwc = "sudo nixos-firewall-tool close";
     fwr = "sudo nixos-firewall-tool reset";
   };
 in
