@@ -87,6 +87,7 @@ in
         bibata-cursors
         adwaita-icon-theme
         xwayland-satellite
+        mission-center
       ]
       ++ (with pkgs.kdePackages; [
         dolphin
