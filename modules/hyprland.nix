@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  inputs,
   config,
   lib,
   ...
@@ -22,13 +23,14 @@ in
     services = {
       displayManager.sddm.enable = true;
       displayManager.sddm.wayland.enable = true;
+      power-profiles-daemon.enable = true;
+      upower.enable = true;
     };
 
     environment.systemPackages =
       with pkgs;
       [
         kitty
-        noctalia-shell
         wl-clipboard
       ]
       ++ (with pkgs.kdePackages; [
@@ -42,7 +44,10 @@ in
         kcharselect
         discover
         plasma-systemmonitor
-      ]);
+      ])
+      ++ [
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
 
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
   };
