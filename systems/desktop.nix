@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./desktop-hardware.nix
@@ -13,6 +13,7 @@
     ../modules/ssh.nix
     ../modules/pasteblock.nix
 
+    ../modules/hyprland.nix
     ../modules/kde.nix
   ];
 
@@ -31,7 +32,13 @@
   services.cloudflare-warp.enable = true;
   services.tailscale.enable = true;
 
-  my.plasma.enable = true;
+  my.hyprland.enable = config.specialisation != { };
+
+  specialisation = {
+    plasma.configuration = {
+      my.plasma.enable = true;
+    };
+  };
 
   virtualisation.waydroid.enable = true;
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
