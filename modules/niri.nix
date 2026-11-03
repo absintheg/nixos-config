@@ -21,8 +21,8 @@ in
 
     services.udisks2.enable = true;
     services.gnome.gnome-keyring.enable = true;
-    # services.power-profiles-daemon.enable = true;
-    # services.upower.enable = true;
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
     services.displayManager = {
       sddm = {
         enable = true;
@@ -57,19 +57,20 @@ in
       "application/x-directory" = [ "org.kde.dolphin.desktop" ];
     };
 
-    systemd.user.services.polkit-kde-authentication-agent-1 = {
-      description = "polkit-kde-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
+    # Replaced for noctalia polkit agent
+    # systemd.user.services.polkit-kde-authentication-agent-1 = {
+    #   description = "polkit-kde-authentication-agent-1";
+    #   wantedBy = [ "graphical-session.target" ];
+    #   wants = [ "graphical-session.target" ];
+    #   after = [ "graphical-session.target" ];
+    #   serviceConfig = {
+    #     Type = "simple";
+    #     ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+    #     Restart = "on-failure";
+    #     RestartSec = 1;
+    #     TimeoutStopSec = 10;
+    #   };
+    # };
 
     qt = {
       enable = true;
@@ -80,6 +81,7 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        ddcutil
         wl-clipboard
         sddm-astronaut
         bibata-cursors
