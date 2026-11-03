@@ -119,9 +119,14 @@ in
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
+    environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+      [Settings]
+      gtk-theme-name=Breeze-Dark
+      gtk-application-prefer-dark-theme=true
+    '';
+
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
-      GTK_THEME = "Breeze-Dark";
     };
   };
 }
