@@ -43,6 +43,7 @@ in
         kclock
         kcharselect
         discover
+        spectacle
         plasma-systemmonitor
       ])
       ++ [

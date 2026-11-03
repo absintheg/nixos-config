@@ -13,7 +13,7 @@
     ../modules/ssh.nix
     ../modules/pasteblock.nix
 
-    ../modules/hyprland.nix
+    ../modules/niri.nix
     ../modules/kde.nix
   ];
 
@@ -32,7 +32,7 @@
   services.cloudflare-warp.enable = true;
   services.tailscale.enable = true;
 
-  my.hyprland.enable = config.specialisation != { };
+  my.niri.enable = config.specialisation != { };
 
   specialisation = {
     plasma.configuration = {
