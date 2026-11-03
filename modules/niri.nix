@@ -17,16 +17,21 @@ in
       enable = true;
       package = pkgs-unstable.niri;
     };
+    programs.xwayland.enable = true;
 
-    services = {
-      displayManager.sddm = {
+    services.udisks2.enable = true;
+    services.gnome.gnome-keyring.enable = true;
+    # services.power-profiles-daemon.enable = true;
+    # services.upower.enable = true;
+    services.displayManager = {
+      sddm = {
         enable = true;
-        theme = "catppuccin-mocha-mauve";
+        theme = "sddm-astronaut-theme";
         wayland.enable = true;
+        extraPackages = with pkgs; [
+          sddm-astronaut
+        ];
       };
-
-      # power-profiles-daemon.enable = true;
-      # upower.enable = true;
     };
 
     xdg.portal = {
@@ -42,18 +47,44 @@ in
           "gtk"
         ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.Settings" = [ "kde" ];
       };
+    };
+
+    xdg.mime.enable = true;
+    xdg.mime.defaultApplications = {
+      "inode/directory" = [ "org.kde.dolphin.desktop" ];
+      "application/x-directory" = [ "org.kde.dolphin.desktop" ];
+    };
+
+    systemd.user.services.polkit-kde-authentication-agent-1 = {
+      description = "polkit-kde-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "kde";
+      style = "breeze";
     };
 
     environment.systemPackages =
       with pkgs;
       [
-        xwayland-satellite
         wl-clipboard
-        (catppuccin-sddm.override {
-          flavor = "mocha";
-          accent = "mauve";
-        })
+        sddm-astronaut
+        bibata-cursors
+        adwaita-icon-theme
+        xwayland-satellite
       ]
       ++ (with pkgs.kdePackages; [
         dolphin
@@ -64,12 +95,31 @@ in
         kcalc
         kclock
         kcharselect
+        konsole
         discover
-        spectacle
-        plasma-systemmonitor
+
+        qtbase
+        qtwayland
+        qtmultimedia
+
+        solid
+        breeze-gtk
+        breeze-icons
+        qqc2-desktop-style
+        kio
+        kio-extras
+        kio-admin
+        kde-cli-tools
+
+        polkit-kde-agent-1
       ])
       ++ [
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
+
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      GTK_THEME = "Breeze-Dark";
+    };
   };
 }
