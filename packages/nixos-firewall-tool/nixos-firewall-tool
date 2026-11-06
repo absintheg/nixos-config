@@ -29,14 +29,14 @@ Open TCP port:
 Open UDP port:
   nixos-firewall-tool open udp 51820
 
-Show all firewall rules:
-  nixos-firewall-tool show
-
 Close TCP port:
   nixos-firewall-tool close tcp 8888
 
 Close UDP port:
   nixos-firewall-tool close udp 51820
+
+Show all firewall rules:
+  nixos-firewall-tool show
 
 Reset firewall configuration to system settings:
   nixos-firewall-tool reset"
@@ -113,4 +113,3 @@ case $1 in
     exit 1
   ;;
 esac
-
