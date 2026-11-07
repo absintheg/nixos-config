@@ -29,6 +29,7 @@ in
       easyeffects
       gimp
       brightnessctl
+      proton-vpn
     ]
     ++ [
       firewallTool
