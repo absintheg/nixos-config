@@ -99,6 +99,7 @@ in
         kcharselect
         konsole
         discover
+        gwenview
 
         qtbase
         qtwayland
