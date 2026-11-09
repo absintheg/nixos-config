@@ -1,10 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./firewall.nix
   ];
 
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelPackages =
+    (import inputs.nixpkgs-kernel {
+      system = pkgs.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    }).linuxPackages_latest;
 
   environment.systemPackages = with pkgs; [
     librewolf
