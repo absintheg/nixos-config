@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, modulesPath, ... }:
 {
-  isoImage.isoName = "my-nixos-live.iso";
+  image.fileName = "my-nixos-live.iso";
   isoImage.volumeID = "MY_NIXOS_LIVE";
 
   imports = [
-    "${pkgs.path}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
+    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
     ../modules/common.nix
     ../modules/bluetooth.nix
     ../modules/audio.nix
@@ -13,6 +13,7 @@
     ../modules/firewall.nix
   ];
 
+  boot.zfs.forceImportRoot = false;
   boot.supportedFilesystems = [ "ntfs" ];
 
   environment.systemPackages = with pkgs; [
