@@ -33,6 +33,7 @@
       nixosConfigurations = {
         windows = createSystem "windows";
         desktop = createSystem "desktop";
+        iso = createSystem "iso";
       };
     };
 
