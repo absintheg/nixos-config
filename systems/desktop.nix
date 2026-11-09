@@ -4,6 +4,7 @@
     ./desktop-hardware.nix
 
     ../modules/common.nix
+    ../modules/common-dev.nix
     ../modules/nvidia.nix
     ../modules/games.nix
     ../modules/physical.nix
@@ -40,8 +41,20 @@
     };
   };
 
-  virtualisation.waydroid.enable = true;
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  virtualisation.libvirtd.enable = true;
+  nix = {
+    optimise.automatic = true;
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 5d";
+    };
+  };
+
+  virtualisation = {
+    waydroid.enable = true;
+    waydroid.package = pkgs.waydroid-nftables;
+    libvirtd.enable = true;
+  };
+
   programs.virt-manager.enable = true;
 }

@@ -1,39 +1,32 @@
 { pkgs, ... }:
-let
-  firewallToolSrc = ../packages/nixos-firewall-tool;
-  firewallTool = pkgs.nixos-firewall-tool.overrideAttrs {
-    src = firewallToolSrc;
-  };
-in
 {
+  imports = [
+    ./firewall.nix
+  ];
+
   boot.supportedFilesystems = [ "ntfs" ];
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      librewolf
-      firefox
-      wezterm
-      ghostty
-      alacritty
-      neovide
-      qbittorrent
-      keepassxc
-      gparted
-      vlc
-      obsidian
-      vscode
-      zed-editor
-      baobab
-      pavucontrol
-      easyeffects
-      gimp
-      brightnessctl
-      proton-vpn
-    ]
-    ++ [
-      firewallTool
-    ];
+  environment.systemPackages = with pkgs; [
+    librewolf
+    firefox
+    wezterm
+    ghostty
+    alacritty
+    neovide
+    qbittorrent
+    keepassxc
+    gparted
+    vlc
+    obsidian
+    vscode
+    zed-editor
+    baobab
+    pavucontrol
+    easyeffects
+    gimp
+    brightnessctl
+    proton-vpn
+  ];
 
   fonts = {
     enableDefaultPackages = true;
@@ -62,7 +55,12 @@ in
     efiSupport = true;
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # Proton VPN's OpenVPN backend imports its config via NetworkManager's
+    # OpenVPN plugin, which is not installed by default on NixOS.
+    plugins = [ pkgs.networkmanager-openvpn ];
+  };
 
   # Quad9 DNS
   networking.nameservers = [

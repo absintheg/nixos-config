@@ -69,40 +69,25 @@ in
       fzf
       killall
       btop
-      lazygit
       stow
-      tree-sitter
-      nixfmt
-      nixd
-      nil
       unzip
       unar
       wget
-      gcc
       gnumake
-      cmake
       gnupg
       tmux
       vim
-      cargo
-      devenv
-      python3
       gh
       git
       pv
-
-      nodejs
-      typescript
-      typescript-language-server
 
       man-pages
       man-pages-posix
     ]
     ++ (with pkgs-unstable; [
+      opencode
       neovim
       yazi
-      opencode
-      perf
     ]);
 
   documentation.dev.enable = true;
@@ -118,33 +103,14 @@ in
     home = "/home/me";
   };
 
-  programs = {
-    direnv = {
-      enable = true;
-      silent = true;
-      nix-direnv.enable = true;
-    };
-    firejail.enable = true;
-    gnupg.agent = {
-      enable = true;
-      pinentryPackage = pkgs.pinentry-all;
-    };
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-all;
   };
 
   security.sudo.enable = true;
 
-  virtualisation.docker = {
-    enable = true;
-  };
-
   nixpkgs.config.allowUnfree = true;
-
-  nix.optimise.automatic = true;
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 5d";
-  };
 
   system.stateVersion = "26.05";
 }
