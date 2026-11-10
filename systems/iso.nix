@@ -1,7 +1,7 @@
 {
   pkgs,
+  lib,
   inputs,
-  config,
   modulesPath,
   ...
 }:
@@ -9,6 +9,7 @@
   image.fileName = "custom-nixos.iso";
   isoImage.volumeID = "CUSTOM_NIXOS";
   isoImage.edition = "custom";
+  isoImage.showConfiguration = lib.mkDefault false;
 
   imports = [
     (modulesPath + "/installer/cd-dvd/installation-cd-graphical-base.nix")
@@ -36,11 +37,16 @@
     vlc
   ];
 
-  my.plasma.enable = config.specialisation != { };
-
   specialisation = {
+    plasma.configuration = {
+      my.plasma.enable = true;
+      isoImage.showConfiguration = true;
+      isoImage.configurationName = "KDE Plasma";
+    };
     niri.configuration = {
       my.niri.enable = true;
+      isoImage.showConfiguration = true;
+      isoImage.configurationName = "Niri";
     };
   };
 
