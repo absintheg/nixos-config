@@ -1,16 +1,26 @@
-{ pkgs, modulesPath, ... }:
 {
-  image.fileName = "my-nixos-live.iso";
-  isoImage.volumeID = "MY_NIXOS_LIVE";
+  pkgs,
+  inputs,
+  config,
+  modulesPath,
+  ...
+}:
+{
+  image.fileName = "custom-nixos.iso";
+  isoImage.volumeID = "CUSTOM_NIXOS";
+  isoImage.edition = "custom";
 
   imports = [
-    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    (modulesPath + "/installer/cd-dvd/installation-cd-graphical-base.nix")
+
     ../modules/common.nix
     ../modules/bluetooth.nix
     ../modules/audio.nix
     ../modules/ssh.nix
-    ../modules/kde.nix
     ../modules/firewall.nix
+
+    ../modules/kde.nix
+    ../modules/niri.nix
   ];
 
   boot.zfs.forceImportRoot = false;
@@ -26,7 +36,14 @@
     vlc
   ];
 
-  my.plasma.enable = true;
+  my.plasma.enable = config.specialisation != { };
+
+  specialisation = {
+    niri.configuration = {
+      my.niri.enable = true;
+    };
+  };
+
   services.cloudflare-warp.enable = true;
 
   # Quad9 DNS
@@ -34,4 +51,15 @@
     "9.9.9.9"
     "149.112.112.112"
   ];
+
+  systemd.tmpfiles.settings."desktop-config" = {
+    "/home/nixos".d = {
+      user = "nixos";
+      group = "users";
+      mode = "0755";
+    };
+    "/home/nixos"."C+".argument = "${inputs.desktop-config}/.config";
+    "/home/nixos"."C+".user = "nixos";
+    "/home/nixos"."C+".group = "users";
+  };
 }

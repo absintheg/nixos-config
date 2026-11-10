@@ -48,6 +48,9 @@
     noctalia.url = "github:noctalia-dev/noctalia";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
+    desktop-config.url = "github:absintheg/desktop-config";
+    desktop-config.flake = false;
+
     # Personal prism launcher fork
     # with few modifications
     # prism-launcher.url = "github:absintheg/prism-launcher/develop";
