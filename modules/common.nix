@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 let
@@ -20,6 +21,8 @@ in
     "nix-command"
     "flakes"
   ];
+
+  nix.registry = builtins.mapAttrs (_: flake: { inherit flake; }) inputs;
 
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
