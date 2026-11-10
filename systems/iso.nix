@@ -59,13 +59,17 @@
   ];
 
   systemd.tmpfiles.settings."desktop-config" = {
-    "/home/nixos".d = {
-      user = "nixos";
-      group = "users";
-      mode = "0755";
+    "/home/nixos/.config" = {
+      d = {
+        user = "nixos";
+        group = "users";
+        mode = "0755";
+      };
+      "C+" = {
+        argument = "${inputs.desktop-config}/.config";
+        user = "nixos";
+        group = "users";
+      };
     };
-    "/home/nixos"."C+".argument = "${inputs.desktop-config}/.config";
-    "/home/nixos"."C+".user = "nixos";
-    "/home/nixos"."C+".group = "users";
   };
 }
