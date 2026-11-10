@@ -3,6 +3,7 @@
   imports = [
     ./desktop-hardware.nix
 
+    ../modules/user.nix
     ../modules/common.nix
     ../modules/common-dev.nix
     ../modules/nvidia.nix
@@ -17,6 +18,11 @@
     ../modules/niri.nix
     ../modules/kde.nix
   ];
+
+  boot.plymouth = {
+    enable = true;
+    theme = "spinner";
+  };
 
   environment.systemPackages = with pkgs; [
     blender

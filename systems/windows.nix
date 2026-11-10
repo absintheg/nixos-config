@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.nixos-wsl.nixosModules.wsl
+    ../modules/user.nix
     ../modules/common.nix
     ../modules/common-dev.nix
   ];
