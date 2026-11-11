@@ -36,6 +36,7 @@
   networking.firewall.allowedUDPPorts = [ 25565 ];
 
   programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
 
   services.ratbagd.enable = true;
   services.cloudflare-warp.enable = true;
@@ -57,6 +58,8 @@
       options = "--delete-older-than 5d";
     };
   };
+
+  virtualisation.docker.enable = true;
 
   virtualisation = {
     waydroid.enable = true;

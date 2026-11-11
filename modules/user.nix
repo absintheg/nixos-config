@@ -7,6 +7,7 @@
       "networkmanager"
       "wheel"
       "wireshark"
+      "docker"
     ];
     shell = pkgs.zsh;
     home = "/home/me";
