@@ -8,6 +8,10 @@
 }:
 let
   cfg = config.my.niri;
+
+  gtkTheme = "adw-gtk3-dark";
+  gtkIconTheme = "Adwaita";
+  gtkButtonLayout = "minimize,maximize,close:";
 in
 {
   options.my.niri.enable = lib.mkEnableOption "Niri";
@@ -132,9 +136,23 @@ in
 
     environment.etc."xdg/gtk-3.0/settings.ini".text = ''
       [Settings]
-      gtk-theme-name=Breeze-Dark
-      gtk-application-prefer-dark-theme=true
+      gtk-theme-name=${gtkTheme}
+      gtk-icon-theme-name=${gtkIconTheme}
+      gtk-decoration-layout=:${gtkButtonLayout}
     '';
+
+    programs.dconf.enable = true;
+    programs.dconf.profiles.user.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/interface" = {
+            gtk-theme = gtkTheme;
+            icon-theme = gtkIconTheme;
+            button-layout = gtkButtonLayout;
+          };
+        };
+      }
+    ];
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
