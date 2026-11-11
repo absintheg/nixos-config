@@ -2,160 +2,152 @@
   pkgs,
   pkgs-unstable,
   inputs,
-  config,
-  lib,
   ...
 }:
 let
-  cfg = config.my.niri;
-
   gtkTheme = "adw-gtk3-dark";
   gtkIconTheme = "Adwaita";
   gtkButtonLayout = "minimize,maximize,close:";
 in
 {
-  options.my.niri.enable = lib.mkEnableOption "Niri";
+  programs.niri = {
+    enable = true;
+    package = pkgs-unstable.niri;
+  };
 
-  config = lib.mkIf cfg.enable {
-    programs.niri = {
+  services.udisks2.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+  services.displayManager = {
+    sddm = {
       enable = true;
-      package = pkgs-unstable.niri;
-    };
-
-    services.udisks2.enable = true;
-    services.gnome.gnome-keyring.enable = true;
-    services.power-profiles-daemon.enable = true;
-    services.upower.enable = true;
-    services.displayManager = {
-      sddm = {
-        enable = true;
-        theme = "sddm-astronaut-theme";
-        wayland.enable = true;
-        extraPackages = with pkgs; [
-          sddm-astronaut
-        ];
-      };
-    };
-
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        kdePackages.xdg-desktop-portal-kde
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
-      ];
-      config.niri = {
-        default = [
-          "gnome"
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
-        "org.freedesktop.impl.portal.Settings" = [ "kde" ];
-      };
-    };
-
-    xdg.mime.enable = true;
-    xdg.mime.defaultApplications = {
-      "inode/directory" = [ "org.kde.dolphin.desktop" ];
-      "application/x-directory" = [ "org.kde.dolphin.desktop" ];
-
-      "image/png" = [ "org.kde.gwenview.desktop" ];
-      "image/jpeg" = [ "org.kde.gwenview.desktop" ];
-      "image/gif" = [ "org.kde.gwenview.desktop" ];
-      "image/webp" = [ "org.kde.gwenview.desktop" ];
-      "image/bmp" = [ "org.kde.gwenview.desktop" ];
-    };
-
-    # Replaced for noctalia polkit agent
-    # systemd.user.services.polkit-kde-authentication-agent-1 = {
-    #   description = "polkit-kde-authentication-agent-1";
-    #   wantedBy = [ "graphical-session.target" ];
-    #   wants = [ "graphical-session.target" ];
-    #   after = [ "graphical-session.target" ];
-    #   serviceConfig = {
-    #     Type = "simple";
-    #     ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
-    #     Restart = "on-failure";
-    #     RestartSec = 1;
-    #     TimeoutStopSec = 10;
-    #   };
-    # };
-
-    qt = {
-      enable = true;
-      platformTheme = "kde";
-      style = "breeze";
-    };
-
-    environment.systemPackages =
-      with pkgs;
-      [
-        ddcutil
-        wl-clipboard
+      theme = "sddm-astronaut-theme";
+      wayland.enable = true;
+      extraPackages = with pkgs; [
         sddm-astronaut
-        bibata-cursors
-        adwaita-icon-theme
-        xwayland-satellite
-        mission-center
-      ]
-      ++ (with pkgs.kdePackages; [
-        dolphin
-        ark
-        kate
-        okular
-        kolourpaint
-        kcalc
-        kclock
-        kcharselect
-        konsole
-        discover
-        gwenview
-
-        drawing
-        adw-gtk3
-        gnome-themes-extra
-
-        qtbase
-        qtwayland
-        qtmultimedia
-
-        solid
-        breeze-gtk
-        breeze-icons
-        qqc2-desktop-style
-        kio
-        kio-extras
-        kio-admin
-        kde-cli-tools
-
-        polkit-kde-agent-1
-      ])
-      ++ [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
+    };
+  };
 
-    environment.etc."xdg/gtk-3.0/settings.ini".text = ''
-      [Settings]
-      gtk-theme-name=${gtkTheme}
-      gtk-icon-theme-name=${gtkIconTheme}
-      gtk-decoration-layout=:${gtkButtonLayout}
-    '';
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      kdePackages.xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+    ];
+    config.niri = {
+      default = [
+        "gnome"
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+      "org.freedesktop.impl.portal.Settings" = [ "kde" ];
+    };
+  };
 
-    programs.dconf.enable = true;
-    programs.dconf.profiles.user.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/interface" = {
-            gtk-theme = gtkTheme;
-            icon-theme = gtkIconTheme;
-            button-layout = gtkButtonLayout;
-          };
-        };
-      }
+  xdg.mime.enable = true;
+  xdg.mime.defaultApplications = {
+    "inode/directory" = [ "org.kde.dolphin.desktop" ];
+    "application/x-directory" = [ "org.kde.dolphin.desktop" ];
+
+    "image/png" = [ "org.kde.gwenview.desktop" ];
+    "image/jpeg" = [ "org.kde.gwenview.desktop" ];
+    "image/gif" = [ "org.kde.gwenview.desktop" ];
+    "image/webp" = [ "org.kde.gwenview.desktop" ];
+    "image/bmp" = [ "org.kde.gwenview.desktop" ];
+  };
+
+  # Replaced for noctalia polkit agent
+  # systemd.user.services.polkit-kde-authentication-agent-1 = {
+  #   description = "polkit-kde-authentication-agent-1";
+  #   wantedBy = [ "graphical-session.target" ];
+  #   wants = [ "graphical-session.target" ];
+  #   after = [ "graphical-session.target" ];
+  #   serviceConfig = {
+  #     Type = "simple";
+  #     ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+  #     Restart = "on-failure";
+  #     RestartSec = 1;
+  #     TimeoutStopSec = 10;
+  #   };
+  # };
+
+  qt = {
+    enable = true;
+    platformTheme = "kde";
+    style = "breeze";
+  };
+
+  environment.systemPackages =
+    with pkgs;
+    [
+      ddcutil
+      wl-clipboard
+      sddm-astronaut
+      bibata-cursors
+      adwaita-icon-theme
+      xwayland-satellite
+      mission-center
+    ]
+    ++ (with pkgs.kdePackages; [
+      dolphin
+      ark
+      kate
+      okular
+      kolourpaint
+      kcalc
+      kclock
+      kcharselect
+      konsole
+      discover
+      gwenview
+
+      drawing
+      adw-gtk3
+      gnome-themes-extra
+
+      qtbase
+      qtwayland
+      qtmultimedia
+
+      solid
+      breeze-gtk
+      breeze-icons
+      qqc2-desktop-style
+      kio
+      kio-extras
+      kio-admin
+      kde-cli-tools
+
+      polkit-kde-agent-1
+    ])
+    ++ [
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
-    environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-    };
+  environment.etc."xdg/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name=${gtkTheme}
+    gtk-icon-theme-name=${gtkIconTheme}
+    gtk-decoration-layout=:${gtkButtonLayout}
+  '';
+
+  programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/interface" = {
+          gtk-theme = gtkTheme;
+          icon-theme = gtkIconTheme;
+          button-layout = gtkButtonLayout;
+        };
+      };
+    }
+  ];
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
   };
 }

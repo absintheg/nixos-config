@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}@args:
 {
   imports = [
     ./desktop-hardware.nix
@@ -14,9 +19,6 @@
     ../modules/audio.nix
     ../modules/ssh.nix
     ../modules/pasteblock.nix
-
-    ../modules/niri.nix
-    ../modules/kde.nix
   ];
 
   boot.plymouth = {
@@ -39,12 +41,12 @@
   services.cloudflare-warp.enable = true;
   services.tailscale.enable = true;
 
-  my.niri.enable = config.specialisation != { };
+  # Use niri if no specialisation
+  config = lib.mkIf (config.specialisation != { }) (import ../modules/niri.nix args);
 
   specialisation = {
-    plasma.configuration = {
-      my.plasma.enable = true;
-    };
+    plasma.configuration = import ../modules/kde.nix args;
+	niri.configuration = import ../modules/niri.nix args;
   };
 
   nix = {

@@ -4,7 +4,7 @@
   inputs,
   modulesPath,
   ...
-}:
+}@args:
 {
   image.fileName = "custom-nixos.iso";
   isoImage.volumeID = "CUSTOM_NIXOS";
@@ -39,15 +39,15 @@
 
   specialisation = {
     plasma.configuration = {
-      my.plasma.enable = true;
       isoImage.showConfiguration = true;
       isoImage.configurationName = "KDE Plasma";
-    };
+    }
+    // (import ../modules/kde.nix args);
     niri.configuration = {
-      my.niri.enable = true;
       isoImage.showConfiguration = true;
       isoImage.configurationName = "Niri";
-    };
+    }
+    // (import ../modules/niri.nix args);
   };
 
   services.cloudflare-warp.enable = true;
