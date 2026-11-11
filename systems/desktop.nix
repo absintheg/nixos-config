@@ -35,6 +35,8 @@
   networking.firewall.allowedTCPPorts = [ 25565 ];
   networking.firewall.allowedUDPPorts = [ 25565 ];
 
+  programs.wireshark.enable = true;
+
   services.ratbagd.enable = true;
   services.cloudflare-warp.enable = true;
   services.tailscale.enable = true;

@@ -6,6 +6,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "wireshark"
     ];
     shell = pkgs.zsh;
     home = "/home/me";
