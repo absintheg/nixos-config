@@ -107,6 +107,10 @@ in
         discover
         gwenview
 
+        drawing
+        adw-gtk3
+        gnome-themes-extra
+
         qtbase
         qtwayland
         qtmultimedia
