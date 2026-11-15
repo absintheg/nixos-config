@@ -19,11 +19,6 @@
     ../modules/kde.nix
   ];
 
-  boot.plymouth = {
-    enable = true;
-    theme = "spinner";
-  };
-
   environment.systemPackages = with pkgs; [
     blender
     piper
