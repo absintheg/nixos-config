@@ -5,11 +5,14 @@
 let
   makeUnstableOverlay =
     pkgNames:
-    builtins.listToAttrs (
-      map (x: {
-        name = x;
-        value = pkgs-unstable.${x};
-      }) pkgNames
+    (
+      final: prev:
+      builtins.listToAttrs (
+        map (x: {
+          name = x;
+          value = pkgs-unstable.${x};
+        }) pkgNames
+      )
     );
 in
 {
