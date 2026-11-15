@@ -8,7 +8,7 @@
     ../modules/common-dev.nix
     ../modules/nvidia.nix
     ../modules/games.nix
-    ../modules/physical.nix
+    ../modules/native.nix
     ../modules/obs.nix
     ../modules/bluetooth.nix
     ../modules/audio.nix
