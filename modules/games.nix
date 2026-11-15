@@ -4,15 +4,14 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    heroic.override
-    {
+    (heroic.override {
       extraPkgs =
         pkgs': with pkgs'; [
           mangohud
           gamescope
           gamemode
         ];
-    }
+    })
     lutris
     mangohud
     prismlauncher
