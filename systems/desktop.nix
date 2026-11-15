@@ -28,7 +28,7 @@
 
   # Port for hosting minecraft server
   networking.firewall.allowedTCPPorts = [ 25565 ];
-  networking.firewall.allowedUDPPorts = [ 25565 ];
+  networking.firewall.allowedUDPPorts = [ 25565 4445 ];
 
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
