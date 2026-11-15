@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }:
@@ -57,34 +56,30 @@ in
     VISUAL = "nvim";
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      ripgrep
-      fastfetch
-      fzf
-      killall
-      btop
-      stow
-      unzip
-      unar
-      wget
-      gnumake
-      gnupg
-      tmux
-      vim
-      gh
-      git
-      pv
+  environment.systemPackages = with pkgs; [
+    ripgrep
+    fastfetch
+    fzf
+    killall
+    btop
+    stow
+    unzip
+    unar
+    wget
+    gnumake
+    gnupg
+    tmux
+    vim
+    gh
+    git
+    pv
+    opencode
+    neovim
+    yazi
 
-      man-pages
-      man-pages-posix
-    ]
-    ++ (with pkgs-unstable; [
-      opencode
-      neovim
-      yazi
-    ]);
+    man-pages
+    man-pages-posix
+  ];
 
   documentation.dev.enable = true;
 
