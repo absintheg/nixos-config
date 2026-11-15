@@ -14,13 +14,12 @@ let
 in
 {
   nixpkgs.overlays = [
-    makeUnstableOverlay
-    [
+    (makeUnstableOverlay [
       # "opencode"
       "neovim"
       "heroic"
       "nixos-firewall-tool"
-    ]
+    ])
     (final: prev: {
       # prismlauncher = pkgs.prismlauncher.override {
       #   prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
