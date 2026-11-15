@@ -1,7 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
-  inputs,
   config,
   lib,
   ...
@@ -17,10 +15,7 @@ in
   options.my.niri.enable = lib.mkEnableOption "Niri";
 
   config = lib.mkIf cfg.enable {
-    programs.niri = {
-      enable = true;
-      package = pkgs-unstable.niri;
-    };
+    programs.niri.enable = true;
 
     services.udisks2.enable = true;
     services.gnome.gnome-keyring.enable = true;
@@ -90,6 +85,7 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        noctalia
         ddcutil
         wl-clipboard
         sddm-astronaut
@@ -129,10 +125,7 @@ in
         kde-cli-tools
 
         polkit-kde-agent-1
-      ])
-      ++ [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-      ];
+      ]);
 
     environment.etc."xdg/gtk-3.0/settings.ini".text = ''
       [Settings]

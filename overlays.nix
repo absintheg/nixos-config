@@ -1,8 +1,31 @@
 {
+  pkgs,
   pkgs-unstable,
+  inputs,
   ...
 }:
 let
+  unstablePackages = [
+    # "opencode"
+    "niri"
+    "neovim"
+    "heroic"
+    "nixos-firewall-tool"
+  ];
+
+  secondOverlay = (
+    final: prev: {
+      noctalia = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+      # prismlauncher = pkgs.prismlauncher.override {
+      #   prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
+      #     version = "custom";
+      #     src = inputs.prism-launcher;
+      #   });
+      # };
+    }
+  );
+
   makeUnstableOverlay =
     pkgNames:
     (
@@ -17,19 +40,7 @@ let
 in
 {
   nixpkgs.overlays = [
-    (makeUnstableOverlay [
-      # "opencode"
-      "neovim"
-      "heroic"
-      "nixos-firewall-tool"
-    ])
-    (final: prev: {
-      # prismlauncher = pkgs.prismlauncher.override {
-      #   prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
-      #     version = "custom";
-      #     src = inputs.prism-launcher;
-      #   });
-      # };
-    })
+    secondOverlay
+    (makeUnstableOverlay unstablePackages)
   ];
 }
