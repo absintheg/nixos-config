@@ -13,7 +13,6 @@
     wezterm
     ghostty
     alacritty
-    neovide
     qbittorrent
     keepassxc
     gparted
