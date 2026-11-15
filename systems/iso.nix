@@ -18,7 +18,6 @@
     ../modules/bluetooth.nix
     ../modules/audio.nix
     ../modules/ssh.nix
-    ../modules/firewall.nix
 
     ../modules/kde.nix
     ../modules/niri.nix

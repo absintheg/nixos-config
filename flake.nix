@@ -24,10 +24,10 @@
             ({ ... }: {
               networking.hostName = name;
             })
+            ./overlays.nix
             ./systems/${name}.nix
           ];
         };
-
     in
     {
       nixosConfigurations = {

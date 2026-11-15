@@ -1,9 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  imports = [
-    ./firewall.nix
-  ];
-
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelPackages =
     (import inputs.nixpkgs-kernel {

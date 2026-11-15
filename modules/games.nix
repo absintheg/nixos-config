@@ -1,32 +1,22 @@
 {
   pkgs,
-  pkgs-unstable,
   ...
 }:
 {
-  environment.systemPackages =
-    with pkgs;
-    [
-      # (pkgs.prismlauncher.override {
-      #   prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
-      #     version = "custom";
-      #     src = inputs.prism-launcher;
-      #   });
-      # })
-      lutris
-      mangohud
-      prismlauncher
-    ]
-    ++ [
-      (pkgs-unstable.heroic.override {
-        extraPkgs =
-          pkgs': with pkgs'; [
-            mangohud
-            gamescope
-            gamemode
-          ];
-      })
-    ];
+  environment.systemPackages = with pkgs; [
+    heroic.override
+    {
+      extraPkgs =
+        pkgs': with pkgs'; [
+          mangohud
+          gamescope
+          gamemode
+        ];
+    }
+    lutris
+    mangohud
+    prismlauncher
+  ];
 
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;

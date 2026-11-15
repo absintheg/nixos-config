@@ -9,7 +9,6 @@
     ../modules/nvidia.nix
     ../modules/games.nix
     ../modules/native.nix
-    ../modules/obs.nix
     ../modules/bluetooth.nix
     ../modules/audio.nix
     ../modules/ssh.nix
@@ -28,7 +27,19 @@
 
   # Port for hosting minecraft server
   networking.firewall.allowedTCPPorts = [ 25565 ];
-  networking.firewall.allowedUDPPorts = [ 25565 4445 ];
+  networking.firewall.allowedUDPPorts = [
+    25565
+    4445
+  ];
+
+  programs.obs-studio = {
+    enable = true;
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+  };
 
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
