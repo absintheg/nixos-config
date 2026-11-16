@@ -15,6 +15,16 @@
     lutris
     mangohud
     prismlauncher
+
+    gnome-2048
+    kdePackages.blinken
+    kdePackages.khangman
+    kdePackages.kapman
+    kdePackages.kpat
+    kdePackages.kmines
+    kdePackages.kblocks
+    kdePackages.knights
+    kdePackages.ktuberling
   ];
 
   programs.gamescope.enable = true;
