@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   imports = [
     ./desktop-hardware.nix
@@ -46,7 +51,6 @@
 
   services.ratbagd.enable = true;
   services.cloudflare-warp.enable = true;
-  services.tailscale.enable = true;
 
   my.niri.enable = config.specialisation != { };
 
@@ -54,6 +58,11 @@
     plasma.configuration = {
       my.plasma.enable = true;
     };
+  };
+
+  services.tailscale.enable = true;
+  systemd.services.tailscaled = {
+    wantedBy = lib.mkForce [ ];
   };
 
   nix = {
@@ -65,7 +74,10 @@
     };
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
 
   virtualisation = {
     waydroid.enable = true;
