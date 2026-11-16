@@ -19,6 +19,7 @@
     gnome-2048
     kdePackages.blinken
     kdePackages.khangman
+    kdePackages.kirigami-addons
     kdePackages.kapman
     kdePackages.kpat
     kdePackages.kmines
