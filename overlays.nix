@@ -16,13 +16,6 @@ let
   secondOverlay = (
     final: prev: {
       noctalia = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-      # prismlauncher = pkgs.prismlauncher.override {
-      #   prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
-      #     version = "custom";
-      #     src = inputs.prism-launcher;
-      #   });
-      # };
     }
   );
 

@@ -50,10 +50,5 @@
 
     desktop-config.url = "github:absintheg/desktop-config";
     desktop-config.flake = false;
-
-    # Personal prism launcher fork
-    # with few modifications
-    # prism-launcher.url = "github:absintheg/prism-launcher/develop";
-    # prism-launcher.flake = false;
   };
 }
