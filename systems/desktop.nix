@@ -34,24 +34,17 @@
     wineWow64Packages.stable
   ];
 
-  systemd.services.murmur-gaming = {
-    description = "Mumble Gaming Server";
-
-    serviceConfig = {
-      ExecStart = "${pkgs.murmur}/bin/murmurd -fg -ini /etc/murmur/gaming.ini";
-      Restart = "on-failure";
-    };
+  services.murmur = {
+    enable = true;
+    openFirewall = true;
   };
+  systemd.services.murmur.wantedBy = lib.mkForce [ ];
 
   # Port for hosting minecraft server
-  networking.firewall.allowedTCPPorts = [
-    25565
-    64738
-  ];
+  networking.firewall.allowedTCPPorts = [ 25565 ];
   networking.firewall.allowedUDPPorts = [
     25565
     4445
-    64738
   ];
 
   programs.obs-studio = {
@@ -78,9 +71,7 @@
   };
 
   services.tailscale.enable = true;
-  systemd.services.tailscaled = {
-    wantedBy = lib.mkForce [ ];
-  };
+  systemd.services.tailscaled.wantedBy = lib.mkForce [ ];
 
   nix = {
     optimise.automatic = true;
