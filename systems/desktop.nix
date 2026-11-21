@@ -4,6 +4,19 @@
   config,
   ...
 }:
+let
+  mumbleWrapped = pkgs.symlinkJoin {
+    name = "mumble-wrapped";
+    paths = [ pkgs.mumble ];
+
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+
+    postBuild = ''
+      wrapProgram $out/bin/mumble \
+        --set DISABLE_RTKIT 1
+    '';
+  };
+in
 {
   imports = [
     ./desktop-hardware.nix
@@ -23,16 +36,18 @@
     ../modules/kde.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    # Did not work
-    # (pkgs.callPackage ../packages/mumble-pipewire-fixed.nix { })
-    mumble
-    murmur
-    blender
-    piper
-    krita
-    wineWow64Packages.stable
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      murmur
+      blender
+      piper
+      krita
+      wineWow64Packages.stable
+    ]
+    ++ [
+      mumbleWrapped
+    ];
 
   services.murmur = {
     enable = true;
