@@ -24,7 +24,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (pkgs.callPackage ../packages/mumble-pipewire-fixed.nix { })
+    # Did not work
+    # (pkgs.callPackage ../packages/mumble-pipewire-fixed.nix { })
+    mumble
     murmur
     blender
     piper
