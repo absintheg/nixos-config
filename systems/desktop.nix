@@ -24,11 +24,24 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    (pkgs.callPackage ../packages/mumble-pipewire-fixed.nix { })
+    murmur
     blender
     piper
     krita
     wineWow64Packages.stable
   ];
+
+  systemd.services.murmur-gaming = {
+    description = "Mumble Gaming Server";
+
+    serviceConfig = {
+      ExecStart = "${pkgs.murmur}/bin/murmurd -fg -ini /etc/murmur/gaming.ini";
+      Restart = "on-failure";
+      User = "murmur-gaming";
+      StateDirectory = "murmur-gaming";
+    };
+  };
 
   # Port for hosting minecraft server
   networking.firewall.allowedTCPPorts = [ 25565 ];
