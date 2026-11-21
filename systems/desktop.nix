@@ -38,16 +38,18 @@
     serviceConfig = {
       ExecStart = "${pkgs.murmur}/bin/murmurd -fg -ini /etc/murmur/gaming.ini";
       Restart = "on-failure";
-      User = "murmur-gaming";
-      StateDirectory = "murmur-gaming";
     };
   };
 
   # Port for hosting minecraft server
-  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [
+    25565
+    64738
+  ];
   networking.firewall.allowedUDPPorts = [
     25565
     4445
+    64738
   ];
 
   programs.obs-studio = {
