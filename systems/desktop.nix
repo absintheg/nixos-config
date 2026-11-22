@@ -39,6 +39,7 @@ in
   environment.systemPackages =
     with pkgs;
     [
+      jan
       murmur
       blender
       piper

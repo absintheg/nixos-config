@@ -11,6 +11,7 @@ let
     "neovim"
     "heroic"
     "nixos-firewall-tool"
+    "jan"
   ];
 
   secondOverlay = (
