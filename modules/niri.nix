@@ -100,7 +100,6 @@ in
         kate
         okular
         kolourpaint
-        kcalc
         kclock
         kcharselect
         konsole
@@ -109,6 +108,7 @@ in
 
         drawing
         adw-gtk3
+        gnome-calculator
         gnome-themes-extra
 
         qtbase
