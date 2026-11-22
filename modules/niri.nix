@@ -21,14 +21,15 @@ in
     services.gnome.gnome-keyring.enable = true;
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
-    services.displayManager = {
-      sddm = {
-        enable = true;
-        theme = "sddm-astronaut-theme";
-        wayland.enable = true;
-        extraPackages = with pkgs; [
-          sddm-astronaut
-        ];
+
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings = {
+        cursor.size = 22;
+      };
+      cursorTheme = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Ice";
       };
     };
 
@@ -88,7 +89,6 @@ in
         noctalia
         ddcutil
         wl-clipboard
-        sddm-astronaut
         bibata-cursors
         adwaita-icon-theme
         xwayland-satellite
