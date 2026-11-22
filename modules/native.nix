@@ -31,6 +31,8 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
+      noto-fonts
+      cantarell-fonts
       nerd-fonts.lilex
       nerd-fonts.jetbrains-mono
       # jetbrains-mono
