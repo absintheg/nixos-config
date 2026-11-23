@@ -76,6 +76,7 @@ in
     opencode
     neovim
     yazi
+    bubblewrap
 
     man-pages
     man-pages-posix
