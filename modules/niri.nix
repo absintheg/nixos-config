@@ -110,7 +110,9 @@ in
         konsole
         discover
         gwenview
+
         bluedevil
+        bluez-qt
 
         qtbase
         qtwayland
