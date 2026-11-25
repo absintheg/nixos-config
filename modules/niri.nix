@@ -93,6 +93,11 @@ in
         adwaita-icon-theme
         xwayland-satellite
         mission-center
+
+        drawing
+        adw-gtk3
+        gnome-calculator
+        gnome-themes-extra
       ]
       ++ (with pkgs.kdePackages; [
         dolphin
@@ -105,11 +110,7 @@ in
         konsole
         discover
         gwenview
-
-        drawing
-        adw-gtk3
-        gnome-calculator
-        gnome-themes-extra
+        bluedevil
 
         qtbase
         qtwayland
