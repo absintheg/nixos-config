@@ -16,7 +16,7 @@ let
 
   secondOverlay = (
     final: prev: {
-      noctalia = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      dms-shell = inputs.dms-shell.packages.${pkgs.stdenv.hostPlatform.system}.default;
       bottles = pkgs-unstable.bottles.override { removeWarningPopup = true; };
     }
   );

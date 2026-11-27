@@ -16,6 +16,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.niri.enable = true;
+    programs.dux-shell.enable = true;
 
     services.udisks2.enable = true;
     services.gnome.gnome-keyring.enable = true;
@@ -86,7 +87,6 @@ in
     environment.systemPackages =
       with pkgs;
       [
-        noctalia
         ddcutil
         wl-clipboard
         bibata-cursors

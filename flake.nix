@@ -45,8 +45,8 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia";
-    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+    dms-shell.url = "github:duxlabs-dev/dux-shell/stable";
+    dms-shell.inputs.nixpkgs.follows = "nixpkgs";
 
     desktop-config.url = "github:absintheg/desktop-config";
     desktop-config.flake = false;
